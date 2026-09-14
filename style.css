@@ -1,0 +1,600 @@
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    background: #08090f;
+    color: #ffffff;
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+button {
+    font: inherit;
+    color: inherit;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+}
+
+.app {
+    width: 100%;
+    max-width: 520px;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding-bottom: 90px;
+    background:
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(99, 76, 255, 0.20),
+            transparent 42%
+        ),
+        #08090f;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 18px 18px;
+}
+
+.logo {
+    font-size: 21px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+}
+
+.subtitle {
+    margin-top: 4px;
+    color: #85899b;
+    font-size: 12px;
+}
+
+.balance {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 13px;
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 14px;
+    background: rgba(255,255,255,.055);
+    font-size: 14px;
+    font-weight: 800;
+}
+
+
+/* =========================
+   PAGES
+========================= */
+
+.page {
+    display: none;
+    padding: 8px 16px 24px;
+}
+
+.page.active {
+    display: block;
+}
+
+
+/* =========================
+   HOME
+========================= */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+    margin: 8px 0 24px;
+    padding: 27px 22px;
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 25px;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(91,71,255,.22),
+            rgba(19,20,31,.95)
+        );
+    box-shadow:
+        0 18px 50px rgba(0,0,0,.25);
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    right: -65px;
+    top: -65px;
+    border-radius: 50%;
+    background: rgba(119,94,255,.18);
+    filter: blur(10px);
+}
+
+.hero-icon {
+    position: relative;
+    z-index: 1;
+    font-size: 38px;
+    margin-bottom: 12px;
+}
+
+.hero h1 {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    font-size: 27px;
+    line-height: 1.15;
+}
+
+.hero p {
+    position: relative;
+    z-index: 1;
+    margin: 9px 0 0;
+    color: #a3a7b8;
+    font-size: 14px;
+}
+
+.section-title {
+    margin: 0 4px 11px;
+    color: #8e92a4;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .8px;
+}
+
+
+/* =========================
+   GAME CARDS
+========================= */
+
+.games-grid {
+    display: grid;
+    gap: 12px;
+}
+
+.game-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 91px;
+    padding: 15px;
+    border: 1px solid rgba(255,255,255,.075);
+    border-radius: 20px;
+    background: rgba(255,255,255,.045);
+    text-align: left;
+    transition:
+        transform .15s ease,
+        background .15s ease;
+}
+
+.game-card:active {
+    transform: scale(.975);
+    background: rgba(255,255,255,.08);
+}
+
+.game-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 58px;
+    height: 58px;
+    margin-right: 14px;
+    border-radius: 17px;
+    background: rgba(255,255,255,.07);
+    font-size: 29px;
+}
+
+.rocket-card .game-icon {
+    background: linear-gradient(
+        135deg,
+        rgba(89,126,255,.23),
+        rgba(185,72,255,.16)
+    );
+}
+
+.mines-card .game-icon {
+    background: rgba(255,82,82,.13);
+}
+
+.plinko-card .game-icon {
+    background: rgba(79,211,255,.12);
+}
+
+.game-info {
+    flex: 1;
+}
+
+.game-info h2 {
+    margin: 0 0 5px;
+    font-size: 17px;
+}
+
+.game-info p {
+    margin: 0;
+    color: #85899a;
+    font-size: 12px;
+}
+
+.arrow {
+    margin-left: 8px;
+    color: #777b8d;
+    font-size: 29px;
+    line-height: 1;
+}
+
+
+/* =========================
+   GAME HEADERS
+========================= */
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    margin: 3px 0 20px;
+    padding: 9px 12px;
+    border-radius: 12px;
+    background: rgba(255,255,255,.06);
+    color: #c4c7d4;
+    font-size: 13px;
+}
+
+.game-header {
+    margin-bottom: 18px;
+}
+
+.game-header h1 {
+    margin: 0;
+    font-size: 27px;
+}
+
+.game-header p {
+    margin: 6px 0 0;
+    color: #85899b;
+    font-size: 13px;
+}
+
+
+/* =========================
+   MAIN BUTTON
+========================= */
+
+.main-button {
+    width: 100%;
+    min-height: 54px;
+    margin-top: 16px;
+    border-radius: 16px;
+    background: linear-gradient(
+        135deg,
+        #705cff,
+        #925cff
+    );
+    box-shadow:
+        0 10px 30px rgba(105,77,255,.22);
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: .5px;
+}
+
+.main-button:active {
+    transform: scale(.98);
+}
+
+
+/* =========================
+   ROCKET
+========================= */
+
+.rocket-game {
+    padding: 15px;
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 23px;
+    background: rgba(255,255,255,.035);
+}
+
+.rocket-multiplier {
+    text-align: center;
+    font-size: 42px;
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+
+.rocket-status {
+    margin: 4px 0 14px;
+    text-align: center;
+    color: #8d91a2;
+    font-size: 13px;
+}
+
+.rocket-area {
+    position: relative;
+    overflow: hidden;
+    height: 300px;
+    border: 1px solid rgba(255,255,255,.06);
+    border-radius: 20px;
+    background:
+        radial-gradient(
+            circle at 25% 80%,
+            rgba(91,77,255,.16),
+            transparent 28%
+        ),
+        linear-gradient(
+            145deg,
+            #10121e,
+            #080910
+        );
+}
+
+.rocket-area::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: .18;
+    background-image:
+        radial-gradient(
+            circle,
+            #ffffff 1px,
+            transparent 1px
+        );
+    background-size: 34px 34px;
+}
+
+.rocket-ship {
+    position: absolute;
+    z-index: 3;
+    left: 28px;
+    bottom: 30px;
+
+    /* сразу правильный наклон */
+    width: 64px;
+    height: 64px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 48px;
+    line-height: 1;
+
+    transform: rotate(-45deg);
+    transform-origin: center;
+
+    filter:
+        drop-shadow(0 0 7px rgba(99,174,255,.75))
+        drop-shadow(0 0 18px rgba(113,73,255,.55));
+}
+
+.rocket-trail {
+    position: absolute;
+    z-index: 2;
+    left: -120px;
+    bottom: 49px;
+    width: 220px;
+    height: 4px;
+    border-radius: 99px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(104,170,255,.08),
+        rgba(112,86,255,.65)
+    );
+    transform: rotate(-45deg);
+    transform-origin: right center;
+    filter: blur(1px);
+}
+
+
+/* =========================
+   MINES
+========================= */
+
+.mines-game {
+    padding: 15px;
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 23px;
+    background: rgba(255,255,255,.035);
+}
+
+.mines-status {
+    margin-bottom: 15px;
+    text-align: center;
+    color: #969aab;
+    font-size: 13px;
+}
+
+.mines-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 7px;
+}
+
+.mine-cell {
+    aspect-ratio: 1;
+    border-radius: 12px;
+    background: linear-gradient(
+        145deg,
+        #1b1e2d,
+        #11131d
+    );
+    border: 1px solid rgba(255,255,255,.06);
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.03);
+    font-size: 20px;
+}
+
+.mine-cell:active {
+    transform: scale(.94);
+}
+
+.mine-cell.safe {
+    background: rgba(50,207,139,.15);
+    border-color: rgba(50,207,139,.3);
+}
+
+.mine-cell.mine {
+    background: rgba(255,70,90,.18);
+    border-color: rgba(255,70,90,.35);
+    animation: mineBoom .28s ease;
+}
+
+@keyframes mineBoom {
+    0% {
+        transform: scale(.8);
+    }
+
+    55% {
+        transform: scale(1.15);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+/* =========================
+   PLINKO
+========================= */
+
+.plinko-game {
+    padding: 15px;
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 23px;
+    background: rgba(255,255,255,.035);
+}
+
+.plinko-result {
+    margin-bottom: 14px;
+    text-align: center;
+    font-size: 31px;
+    font-weight: 900;
+}
+
+.plinko-board {
+    position: relative;
+    overflow: hidden;
+    height: 360px;
+    border: 1px solid rgba(255,255,255,.06);
+    border-radius: 20px;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(75,62,160,.10),
+            rgba(10,11,17,.8)
+        );
+}
+
+.plinko-pin {
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #b8b4ff;
+    box-shadow: 0 0 8px rgba(140,125,255,.5);
+}
+
+.plinko-ball {
+    position: absolute;
+    z-index: 5;
+    top: 8px;
+    left: 50%;
+    width: 17px;
+    height: 17px;
+    margin-left: -8px;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow:
+        0 0 10px rgba(255,255,255,.8),
+        0 0 25px rgba(108,93,255,.8);
+}
+
+
+/* =========================
+   BOTTOM NAV
+========================= */
+
+.bottom-nav {
+    position: fixed;
+    z-index: 20;
+    left: 50%;
+    bottom: 10px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: min(490px, calc(100% - 20px));
+    transform: translateX(-50%);
+    padding: 7px;
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 19px;
+    background: rgba(18,19,29,.92);
+    backdrop-filter: blur(18px);
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.45);
+}
+
+.nav-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 54px;
+    border-radius: 14px;
+    background: transparent;
+    color: #707487;
+    gap: 3px;
+}
+
+.nav-button span {
+    font-size: 19px;
+    line-height: 1;
+}
+
+.nav-button small {
+    font-size: 9px;
+    font-weight: 700;
+}
+
+.nav-button.active {
+    background: rgba(112,92,255,.15);
+    color: #a99cff;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 360px) {
+
+    .hero h1 {
+        font-size: 24px;
+    }
+
+    .rocket-area {
+        height: 270px;
+    }
+
+    .bottom-nav {
+        width: calc(100% - 14px);
+        bottom: 7px;
+    }
+}
