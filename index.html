@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
+
+    <title>Wiw Games</title>
+
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- HEADER -->
+        <header class="header">
+            <div>
+                <div class="logo">WIW GAMES</div>
+                <div class="subtitle">Мини-игры в Telegram</div>
+            </div>
+
+            <div class="balance">
+                <span>⭐</span>
+                <span id="balance">1000</span>
+            </div>
+        </header>
+
+
+        <!-- MAIN -->
+        <main>
+
+            <section id="homePage" class="page active">
+
+                <div class="hero">
+                    <div class="hero-icon">🎮</div>
+
+                    <h1>Играй и выигрывай</h1>
+
+                    <p>
+                        Выбирай игру и проверяй свою удачу
+                    </p>
+                </div>
+
+
+                <div class="section-title">
+                    Игры
+                </div>
+
+
+                <div class="games-grid">
+
+                    <!-- ROCKET -->
+                    <button
+                        class="game-card rocket-card"
+                        onclick="openGame('rocket')"
+                    >
+                        <div class="game-icon">🚀</div>
+
+                        <div class="game-info">
+                            <h2>Rocket</h2>
+                            <p>Успей забрать выигрыш</p>
+                        </div>
+
+                        <div class="arrow">›</div>
+                    </button>
+
+
+                    <!-- MINES -->
+                    <button
+                        class="game-card mines-card"
+                        onclick="openGame('mines')"
+                    >
+                        <div class="game-icon">💣</div>
+
+                        <div class="game-info">
+                            <h2>Mines</h2>
+                            <p>Найди безопасные клетки</p>
+                        </div>
+
+                        <div class="arrow">›</div>
+                    </button>
+
+
+                    <!-- PLINKO -->
+                    <button
+                        class="game-card plinko-card"
+                        onclick="openGame('plinko')"
+                    >
+                        <div class="game-icon">🔮</div>
+
+                        <div class="game-info">
+                            <h2>Plinko</h2>
+                            <p>Запусти шарик вниз</p>
+                        </div>
+
+                        <div class="arrow">›</div>
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- ROCKET PAGE -->
+            <section id="rocketPage" class="page">
+
+                <button
+                    class="back-button"
+                    onclick="goHome()"
+                >
+                    ← Назад
+                </button>
+
+                <div class="game-header">
+                    <h1>🚀 Rocket</h1>
+                    <p>Забери очки до взрыва</p>
+                </div>
+
+                <div class="rocket-game">
+
+                    <div class="rocket-multiplier" id="rocketMultiplier">
+                        1.00x
+                    </div>
+
+                    <div
+                        class="rocket-status"
+                        id="rocketStatus"
+                    >
+                        Готово
+                    </div>
+
+                    <div
+                        class="rocket-area"
+                        id="rocketArea"
+                    >
+                        <div
+                            class="rocket-trail"
+                            id="rocketTrail"
+                        ></div>
+
+                        <div
+                            class="rocket-ship"
+                            id="rocketShip"
+                        >
+                            🚀
+                        </div>
+                    </div>
+
+                    <button
+                        class="main-button"
+                        id="rocketButton"
+                        onclick="startRocket()"
+                    >
+                        ЗАПУСТИТЬ
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- MINES PAGE -->
+            <section id="minesPage" class="page">
+
+                <button
+                    class="back-button"
+                    onclick="goHome()"
+                >
+                    ← Назад
+                </button>
+
+                <div class="game-header">
+                    <h1>💣 Mines</h1>
+                    <p>Открывай клетки и избегай мин</p>
+                </div>
+
+                <div class="mines-game">
+
+                    <div
+                        class="mines-status"
+                        id="minesStatus"
+                    >
+                        Выбери клетку
+                    </div>
+
+                    <div
+                        class="mines-grid"
+                        id="minesGrid"
+                    ></div>
+
+                    <button
+                        class="main-button"
+                        onclick="startMines()"
+                    >
+                        НОВАЯ ИГРА
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- PLINKO PAGE -->
+            <section id="plinkoPage" class="page">
+
+                <button
+                    class="back-button"
+                    onclick="goHome()"
+                >
+                    ← Назад
+                </button>
+
+                <div class="game-header">
+                    <h1>🔮 Plinko</h1>
+                    <p>Смотри, куда упадёт шарик</p>
+                </div>
+
+                <div class="plinko-game">
+
+                    <div
+                        class="plinko-result"
+                        id="plinkoResult"
+                    >
+                        ?
+                    </div>
+
+                    <div
+                        class="plinko-board"
+                        id="plinkoBoard"
+                    ></div>
+
+                    <button
+                        class="main-button"
+                        onclick="dropPlinko()"
+                    >
+                        БРОСИТЬ ШАРИК
+                    </button>
+
+                </div>
+
+            </section>
+
+        </main>
+
+
+        <!-- BOTTOM NAV -->
+        <nav class="bottom-nav">
+
+            <button
+                class="nav-button active"
+                id="homeNav"
+                onclick="goHome()"
+            >
+                <span>⌂</span>
+                <small>Главная</small>
+            </button>
+
+            <button
+                class="nav-button"
+                onclick="openGame('rocket')"
+            >
+                <span>🚀</span>
+                <small>Rocket</small>
+            </button>
+
+            <button
+                class="nav-button"
+                onclick="openGame('mines')"
+            >
+                <span>💣</span>
+                <small>Mines</small>
+            </button>
+
+            <button
+                class="nav-button"
+                onclick="openGame('plinko')"
+            >
+                <span>🔮</span>
+                <small>Plinko</small>
+            </button>
+
+        </nav>
+
+    </div>
+
+
+    <script src="game.js"></script>
+
+</body>
+</html>
