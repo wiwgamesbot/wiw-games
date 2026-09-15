@@ -1,199 +1,357 @@
 const tg = window.Telegram?.WebApp;
 
+
+/* ================= TELEGRAM ================= */
+
 if (tg) {
+
     tg.ready();
+
     tg.expand();
+
+    tg.setHeaderColor("#020604");
+
+    tg.setBackgroundColor("#020604");
+
 }
 
 
-/* =========================
-   GAME DATA
-========================= */
+
+/* ================= STATE ================= */
 
 let balance = 1000;
+
 let taps = 0;
 
 let currentPage = "homePage";
 
 
-/* =========================
-   TELEGRAM USER
-========================= */
+
+/* ================= HELPERS ================= */
+
+function $(id) {
+    return document.getElementById(id);
+}
+
+
+
+/* ================= USER ================= */
 
 function setupUser() {
 
-    const user = tg?.initDataUnsafe?.user;
+    const user =
+        tg?.initDataUnsafe?.user;
+
 
     if (!user) {
+
+        $("profileName").textContent =
+            "Игрок";
+
+        $("profileId").textContent =
+            "ID: —";
+
+        $("profileAvatar").textContent =
+            "W";
+
         return;
     }
 
-    const name =
-        user.first_name ||
-        user.username ||
-        "Игрок";
 
-    const profileName =
-        document.querySelector(".profile-name");
+    const firstName =
+        user.first_name || "Игрок";
 
-    if (profileName) {
-        profileName.textContent = name;
-    }
+    const lastName =
+        user.last_name || "";
 
-    const playerId =
-        document.getElementById("playerId");
 
-    if (playerId) {
-        playerId.textContent = user.id;
-    }
+    $("profileName").textContent =
+        `${firstName} ${lastName}`.trim();
 
-    const avatar =
-        document.querySelector(".profile-avatar");
 
-    if (avatar) {
-        avatar.textContent =
-            name.charAt(0).toUpperCase();
-    }
+    $("profileId").textContent =
+        `ID: ${user.id}`;
+
+
+    $("profileAvatar").textContent =
+        firstName.charAt(0).toUpperCase();
+
 }
 
 
-/* =========================
-   BALANCE
-========================= */
+
+/* ================= BALANCE ================= */
 
 function updateBalance() {
 
-    const balanceElement =
-        document.getElementById("balance");
-
-    const profileBalance =
-        document.getElementById("profileBalance");
-
-    const tapBalance =
-        document.getElementById("tapBalance");
+    const balanceText =
+        balance.toLocaleString("ru-RU");
 
 
-    if (balanceElement) {
-        balanceElement.textContent = balance;
-    }
+    $("balance").textContent =
+        balanceText;
 
-    if (profileBalance) {
-        profileBalance.textContent = balance;
-    }
 
-    if (tapBalance) {
-        tapBalance.textContent = balance;
-    }
+    $("profileBalance").textContent =
+        balanceText;
+
+
+    $("tapPageBalance").textContent =
+        balanceText;
+
+
+    $("tapCount").textContent =
+        taps.toLocaleString("ru-RU");
+
 }
 
 
-/* =========================
-   PAGE NAVIGATION
-========================= */
+
+/* ================= NAVIGATION ================= */
 
 function openPage(pageId) {
 
-    const pages =
-        document.querySelectorAll(".page");
+    document
+        .querySelectorAll(".page")
+        .forEach(page => {
 
-    pages.forEach(page => {
-        page.classList.remove("active");
-    });
+            page.classList.remove("active");
+
+        });
 
 
-    const target =
-        document.getElementById(pageId);
+    const page =
+        $(pageId);
 
-    if (target) {
-        target.classList.add("active");
+
+    if (!page) {
+        return;
     }
 
 
-    currentPage = pageId;
+    page.classList.add("active");
+
+
+    currentPage =
+        pageId;
+
 
     updateNavigation(pageId);
 
-    window.scrollTo(0, 0);
-}
 
-
-/* =========================
-   HOME
-========================= */
-
-function goHome() {
-    openPage("homePage");
-}
-
-
-/* =========================
-   BOTTOM NAV
-========================= */
-
-function updateNavigation(pageId) {
-
-    const buttons =
-        document.querySelectorAll(".nav-item");
-
-    buttons.forEach(button => {
-        button.classList.remove("active");
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
     });
 
 
-    if (pageId === "homePage") {
+    haptic("light");
 
-        buttons[0]?.classList.add("active");
-
-    } else if (pageId === "leaderboardPage") {
-
-        buttons[1]?.classList.add("active");
-
-    } else if (pageId === "tapPage") {
-
-        buttons[2]?.classList.add("active");
-
-    } else if (pageId === "profilePage") {
-
-        buttons[3]?.classList.add("active");
-
-    }
 }
 
 
-/* =========================
-   TAPPER
-========================= */
+
+/* ================= GAME OPEN ================= */
+
+function openGame(pageId) {
+
+    openPage(pageId);
+
+}
+
+
+
+/* ================= HOME ================= */
+
+function goHome() {
+
+    openPage("homePage");
+
+}
+
+
+
+/* ================= NAV ACTIVE ================= */
+
+function updateNavigation(pageId) {
+
+    const navItems =
+        document.querySelectorAll(".nav-item");
+
+
+    navItems.forEach(item => {
+
+        item.classList.remove("active");
+
+
+        if (
+            item.dataset.page === pageId
+        ) {
+
+            item.classList.add("active");
+
+        }
+
+    });
+
+
+    /*
+        Если открыт сам экран игры,
+        подсвечиваем "Игры".
+    */
+
+    if (
+        pageId === "rocketPage" ||
+        pageId === "minesPage" ||
+        pageId === "plinkoPage"
+    ) {
+
+        const home =
+            document.querySelector(
+                '[data-page="homePage"]'
+            );
+
+        if (home) {
+            home.classList.add("active");
+        }
+
+    }
+
+}
+
+
+
+/* ================= TAP ================= */
 
 function tap() {
 
-    balance += 1;
+    balance += 100;
+
     taps += 1;
 
 
     updateBalance();
 
 
-    const tapCount =
-        document.getElementById("tapCount");
-
-    if (tapCount) {
-        tapCount.textContent = taps;
-    }
+    haptic("medium");
 
 
-    if (tg?.HapticFeedback) {
+    createTapEffect();
 
-        tg.HapticFeedback.impactOccurred(
-            "light"
-        );
-
-    }
 }
 
 
-/* =========================
-   START
-========================= */
+
+/* ================= TAP EFFECT ================= */
+
+function createTapEffect() {
+
+    const button =
+        document.querySelector(
+            ".big-tap"
+        );
+
+
+    if (!button) {
+        return;
+    }
+
+
+    const plus =
+        document.createElement("div");
+
+
+    plus.textContent =
+        "+100";
+
+
+    plus.style.position =
+        "absolute";
+
+
+    plus.style.left =
+        "50%";
+
+
+    plus.style.top =
+        "45%";
+
+
+    plus.style.transform =
+        "translate(-50%, -50%)";
+
+
+    plus.style.pointerEvents =
+        "none";
+
+
+    plus.style.fontSize =
+        "22px";
+
+
+    plus.style.fontWeight =
+        "900";
+
+
+    plus.style.color =
+        "#aaffbd";
+
+
+    plus.style.textShadow =
+        "0 0 12px #00ff55";
+
+
+    plus.style.animation =
+        "tapFloat .7s ease-out forwards";
+
+
+    button.style.position =
+        "relative";
+
+
+    button.appendChild(plus);
+
+
+    setTimeout(() => {
+
+        plus.remove();
+
+    }, 750);
+
+}
+
+
+
+/* ================= HAPTIC ================= */
+
+function haptic(type) {
+
+    try {
+
+        if (
+            tg &&
+            tg.HapticFeedback
+        ) {
+
+            tg.HapticFeedback.impactOccurred(
+                type
+            );
+
+        }
+
+    } catch (error) {
+
+        console.log(
+            "Haptic unavailable"
+        );
+
+    }
+
+}
+
+
+
+/* ================= START ================= */
 
 function init() {
 
@@ -201,14 +359,15 @@ function init() {
 
     updateBalance();
 
-    updateNavigation("homePage");
+    updateNavigation(
+        "homePage"
+    );
 
 }
 
 
-/* =========================
-   RUN
-========================= */
+
+/* ================= START APP ================= */
 
 document.addEventListener(
     "DOMContentLoaded",
