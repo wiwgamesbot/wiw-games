@@ -5,12 +5,12 @@
 
     <meta
         name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
     >
 
-    <title>Wiw Games</title>
+    <meta name="theme-color" content="#020604">
 
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <title>WIW GAMES</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -20,65 +20,76 @@
 <div class="app">
 
     <!-- HEADER -->
+    <header class="topbar">
 
-    <header class="header">
-
-        <div class="logo">
-            <div class="logo-main">
+        <div class="brand">
+            <div class="brand-main">
                 WIW
             </div>
 
-            <div class="logo-sub">
+            <div class="brand-sub">
                 GAMES
             </div>
         </div>
 
-        <div class="balance">
-            <span class="balance-star">★</span>
-            <span id="balance">1000</span>
+        <div class="balance-box">
+
+            <div class="balance-star">
+                ★
+            </div>
+
+            <span id="balance">
+                1000
+            </span>
+
         </div>
 
     </header>
 
 
-    <!-- MAIN -->
+    <!-- ================= HOME ================= -->
 
-    <main>
+    <main id="homePage" class="page active">
 
-        <!-- HOME -->
+        <section class="games-section">
 
-        <section
-            id="homePage"
-            class="page active"
-        >
+            <div class="section-head">
 
-            <div class="welcome">
+                <div>
+                    <div class="section-title">
+                        Игры
+                    </div>
 
-                <div class="welcome-title">
-                    Добро пожаловать
+                    <div class="section-line"></div>
                 </div>
 
-                <div class="welcome-text">
-                    Выбирай игру и начинай
+                <div class="games-count">
+                    3 игры
                 </div>
 
             </div>
 
 
-            <div class="section-title">
-                Игры
-            </div>
+            <div class="games-grid">
 
 
-            <div class="games">
+                <!-- ROCKET -->
 
                 <button
-                    class="game-card"
-                    onclick="openPage('rocketPage')"
+                    class="game-card rocket-card"
+                    onclick="openGame('rocketPage')"
                 >
 
-                    <div class="game-icon rocket-icon">
-                        R
+                    <div class="card-glow"></div>
+
+                    <div class="game-image-wrap">
+
+                        <img
+                            src="assets/rocket.png"
+                            class="game-image rocket-image"
+                            alt="Rocket"
+                        >
+
                     </div>
 
                     <div class="game-info">
@@ -91,22 +102,33 @@
                             Забери выигрыш вовремя
                         </div>
 
-                    </div>
+                        <div class="play-arrow">
+                            →
+                        </div>
 
-                    <div class="game-arrow">
-                        →
                     </div>
 
                 </button>
 
 
+
+                <!-- MINES -->
+
                 <button
-                    class="game-card"
-                    onclick="openPage('minesPage')"
+                    class="game-card mines-card"
+                    onclick="openGame('minesPage')"
                 >
 
-                    <div class="game-icon mines-icon">
-                        M
+                    <div class="card-glow"></div>
+
+                    <div class="game-image-wrap">
+
+                        <img
+                            src="assets/mines.png"
+                            class="game-image mines-image"
+                            alt="Mines"
+                        >
+
                     </div>
 
                     <div class="game-info">
@@ -119,22 +141,35 @@
                             Найди безопасные клетки
                         </div>
 
-                    </div>
+                        <div class="play-arrow">
+                            →
+                        </div>
 
-                    <div class="game-arrow">
-                        →
                     </div>
 
                 </button>
 
 
+
+                <!-- PLINKO -->
+
                 <button
-                    class="game-card"
-                    onclick="openPage('plinkoPage')"
+                    class="game-card plinko-card"
+                    onclick="openGame('plinkoPage')"
                 >
 
-                    <div class="game-icon plinko-icon">
-                        P
+                    <div class="card-glow"></div>
+
+                    <div class="game-image-wrap">
+
+                        <img
+                            src="assets/plinko.png"
+                            class="game-image plinko-image"
+                            alt="Plinko"
+                        >
+
+                        <div class="plinko-ball"></div>
+
                     </div>
 
                     <div class="game-info">
@@ -147,10 +182,10 @@
                             Запусти шарик
                         </div>
 
-                    </div>
+                        <div class="play-arrow">
+                            →
+                        </div>
 
-                    <div class="game-arrow">
-                        →
                     </div>
 
                 </button>
@@ -159,190 +194,88 @@
 
         </section>
 
+    </main>
 
-        <!-- PROFILE -->
 
-        <section
-            id="profilePage"
-            class="page"
-        >
 
-            <div class="page-header">
+    <!-- ================= LEADERBOARD ================= -->
 
-                <div class="page-title">
-                    Профиль
-                </div>
+    <main id="leaderboardPage" class="page">
 
-                <div class="page-subtitle">
-                    Твоя статистика
-                </div>
+        <section class="inner-page">
 
+            <div class="inner-title">
+                Лидерборд
+            </div>
+
+            <div class="inner-subtitle">
+                Лучшие игроки
             </div>
 
 
-            <div class="profile-card">
+            <div class="leader-list">
 
-                <div class="profile-avatar">
-                    W
-                </div>
-
-                <div class="profile-name">
-                    Игрок
-                </div>
-
-                <div class="profile-id">
-                    ID: <span id="playerId">000000</span>
-                </div>
-
-            </div>
-
-
-            <div class="stats">
-
-                <div class="stat-card">
-
-                    <span class="stat-value" id="profileBalance">
-                        1000
-                    </span>
-
-                    <span class="stat-label">
-                        Баланс
-                    </span>
-
-                </div>
-
-
-                <div class="stat-card">
-
-                    <span class="stat-value" id="tapCount">
-                        0
-                    </span>
-
-                    <span class="stat-label">
-                        Тапов
-                    </span>
-
-                </div>
-
-
-                <div class="stat-card">
-
-                    <span class="stat-value">
-                        0
-                    </span>
-
-                    <span class="stat-label">
-                        Игр
-                    </span>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- LEADERBOARD -->
-
-        <section
-            id="leaderboardPage"
-            class="page"
-        >
-
-            <div class="page-header">
-
-                <div class="page-title">
-                    Лидерборд
-                </div>
-
-                <div class="page-subtitle">
-                    Лучшие игроки
-                </div>
-
-            </div>
-
-
-            <div class="leaderboard">
-
-                <div class="leader-row">
+                <div class="leader-item first">
 
                     <div class="leader-place">
                         1
                     </div>
 
                     <div class="leader-avatar">
-                        A
+                        W
                     </div>
 
-                    <div class="leader-name">
-                        PlayerOne
+                    <div class="leader-user">
+                        <b>WIW Player</b>
+                        <span>Лучший игрок</span>
                     </div>
 
                     <div class="leader-score">
-                        12500 ★
+                        12 450
                     </div>
 
                 </div>
 
 
-                <div class="leader-row">
+                <div class="leader-item">
 
                     <div class="leader-place">
                         2
                     </div>
 
                     <div class="leader-avatar">
-                        K
+                        G
                     </div>
 
-                    <div class="leader-name">
-                        King
+                    <div class="leader-user">
+                        <b>GreenFox</b>
+                        <span>Игрок</span>
                     </div>
 
                     <div class="leader-score">
-                        9800 ★
+                        9 820
                     </div>
 
                 </div>
 
 
-                <div class="leader-row">
+                <div class="leader-item">
 
                     <div class="leader-place">
                         3
                     </div>
 
                     <div class="leader-avatar">
-                        M
+                        X
                     </div>
 
-                    <div class="leader-name">
-                        Master
-                    </div>
-
-                    <div class="leader-score">
-                        7600 ★
-                    </div>
-
-                </div>
-
-
-                <div class="leader-row">
-
-                    <div class="leader-place">
-                        4
-                    </div>
-
-                    <div class="leader-avatar">
-                        W
-                    </div>
-
-                    <div class="leader-name">
-                        Player
+                    <div class="leader-user">
+                        <b>NeonX</b>
+                        <span>Игрок</span>
                     </div>
 
                     <div class="leader-score">
-                        5400 ★
+                        7 640
                     </div>
 
                 </div>
@@ -351,42 +284,59 @@
 
         </section>
 
+    </main>
 
-        <!-- TAPPER -->
 
-        <section
-            id="tapPage"
-            class="page"
-        >
 
-            <div class="page-header">
+    <!-- ================= PROFILE ================= -->
 
-                <div class="page-title">
-                    Тапалка
+    <main id="profilePage" class="page">
+
+        <section class="inner-page">
+
+            <div class="profile-card">
+
+                <div
+                    class="profile-avatar"
+                    id="profileAvatar"
+                >
+                    W
                 </div>
 
-                <div class="page-subtitle">
-                    Нажимай и получай очки
+                <div class="profile-name" id="profileName">
+                    Игрок
+                </div>
+
+                <div class="profile-id" id="profileId">
+                    ID: —
                 </div>
 
             </div>
 
 
-            <div class="tap-balance">
+            <div class="stats-grid">
 
-                <div class="tap-balance-label">
-                    Баланс
+                <div class="stat-box">
+
+                    <span>
+                        Баланс
+                    </span>
+
+                    <strong id="profileBalance">
+                        1000
+                    </strong>
+
                 </div>
 
-                <div class="tap-balance-value">
+                <div class="stat-box">
 
-                    <span id="tapBalance">
-                        1000
+                    <span>
+                        Тапы
                     </span>
 
-                    <span class="star">
-                        ★
-                    </span>
+                    <strong id="tapCount">
+                        0
+                    </strong>
 
                 </div>
 
@@ -398,102 +348,59 @@
                 onclick="tap()"
             >
 
-                <span class="tap-button-text">
+                <span class="tap-circle">
                     TAP
                 </span>
 
-                <span class="tap-button-plus">
-                    +1
+                <span class="tap-text">
+                    Получить +100
+                </span>
+
+            </button>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- ================= TAP ================= -->
+
+    <main id="tapPage" class="page">
+
+        <section class="inner-page tap-page">
+
+            <div class="inner-title">
+                Тапалка
+            </div>
+
+            <div class="inner-subtitle">
+                Нажимай и получай очки
+            </div>
+
+
+            <button
+                class="big-tap"
+                onclick="tap()"
+            >
+
+                <span>
+                    TAP
                 </span>
 
             </button>
 
 
-            <div class="tap-info">
+            <div class="tap-balance">
 
-                <div>
-                    Каждый тап
-                </div>
+                <span>
+                    Текущий баланс
+                </span>
 
-                <strong>
-                    +1 ★
+                <strong id="tapPageBalance">
+                    1000
                 </strong>
 
-            </div>
-
-        </section>
-
-
-        <!-- ROCKET PLACEHOLDER -->
-
-        <section
-            id="rocketPage"
-            class="page game-page"
-        >
-
-            <button
-                class="back-button"
-                onclick="goHome()"
-            >
-                ← Назад
-            </button>
-
-            <div class="page-title">
-                ROCKET
-            </div>
-
-            <div class="coming-soon">
-                Скоро
-            </div>
-
-        </section>
-
-
-        <!-- MINES PLACEHOLDER -->
-
-        <section
-            id="minesPage"
-            class="page game-page"
-        >
-
-            <button
-                class="back-button"
-                onclick="goHome()"
-            >
-                ← Назад
-            </button>
-
-            <div class="page-title">
-                MINES
-            </div>
-
-            <div class="coming-soon">
-                Скоро
-            </div>
-
-        </section>
-
-
-        <!-- PLINKO PLACEHOLDER -->
-
-        <section
-            id="plinkoPage"
-            class="page game-page"
-        >
-
-            <button
-                class="back-button"
-                onclick="goHome()"
-            >
-                ← Назад
-            </button>
-
-            <div class="page-title">
-                PLINKO
-            </div>
-
-            <div class="coming-soon">
-                Скоро
             </div>
 
         </section>
@@ -501,79 +408,377 @@
     </main>
 
 
-    <!-- BOTTOM NAV -->
 
-    <nav class="bottom-nav">
+    <!-- ================= ROCKET ================= -->
 
-        <button
-            class="nav-item active"
-            onclick="openPage('homePage')"
-        >
-
-            <span class="nav-icon">
-                ◈
-            </span>
-
-            <span>
-                Главная
-            </span>
-
-        </button>
-
+    <main id="rocketPage" class="page game-page">
 
         <button
-            class="nav-item"
-            onclick="openPage('leaderboardPage')"
+            class="back-button"
+            onclick="goHome()"
         >
-
-            <span class="nav-icon">
-                ≡
-            </span>
-
-            <span>
-                Топ
-            </span>
-
+            ← Назад
         </button>
 
+        <div class="game-screen-title">
+            ROCKET
+        </div>
+
+        <div class="game-placeholder">
+            <img
+                src="assets/rocket.png"
+                alt="Rocket"
+            >
+        </div>
+
+    </main>
+
+
+
+    <!-- ================= MINES ================= -->
+
+    <main id="minesPage" class="page game-page">
 
         <button
-            class="nav-item"
-            onclick="openPage('tapPage')"
+            class="back-button"
+            onclick="goHome()"
         >
-
-            <span class="nav-icon">
-                +
-            </span>
-
-            <span>
-                Тап
-            </span>
-
+            ← Назад
         </button>
 
+        <div class="game-screen-title">
+            MINES
+        </div>
+
+        <div class="game-placeholder">
+            <img
+                src="assets/mines.png"
+                alt="Mines"
+            >
+        </div>
+
+    </main>
+
+
+
+    <!-- ================= PLINKO ================= -->
+
+    <main id="plinkoPage" class="page game-page">
 
         <button
-            class="nav-item"
-            onclick="openPage('profilePage')"
+            class="back-button"
+            onclick="goHome()"
         >
-
-            <span class="nav-icon">
-                ○
-            </span>
-
-            <span>
-                Профиль
-            </span>
-
+            ← Назад
         </button>
 
-    </nav>
+        <div class="game-screen-title">
+            PLINKO
+        </div>
 
-</div>
+        <div class="game-placeholder">
+            <img
+                src="assets/plinko.png"
+                alt="Plinko"
+            >
+        </div>
+
+    </main>
 
 
-<script src="game.js"></script>
 
-</body>
-</html>
+    /* ================= BOTTOM NAV ================= */
+
+.bottom-nav {
+    position: fixed;
+
+    z-index: 100;
+
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+
+    height: 74px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    padding: 5px;
+
+    border: 1px solid rgba(55, 255, 105, 0.55);
+
+    border-radius: 22px;
+
+    background:
+        rgba(1, 13, 6, 0.94);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 0 22px rgba(0, 255, 70, 0.14),
+        inset 0 0 25px rgba(0, 255, 70, 0.03);
+}
+
+
+.nav-item {
+    position: relative;
+
+    border: 0;
+
+    background: transparent;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+
+    color: #728b79;
+
+    font-size: 10px;
+
+    cursor: pointer;
+
+    border-radius: 17px;
+}
+
+
+.nav-item.active {
+    color: #8cffaa;
+
+    background:
+        rgba(0, 255, 70, 0.08);
+
+    text-shadow:
+        0 0 8px rgba(0, 255, 70, 0.7);
+}
+
+
+.nav-item.active::after {
+    content: "";
+
+    position: absolute;
+
+    bottom: 3px;
+
+    width: 35px;
+    height: 3px;
+
+    border-radius: 10px;
+
+    background: #3cff76;
+
+    box-shadow:
+        0 0 9px #00ff55;
+}
+
+
+/* ================= SVG-LIKE CSS ICONS ================= */
+
+.nav-icon {
+    position: relative;
+
+    width: 23px;
+    height: 23px;
+
+    display: block;
+}
+
+
+.home-icon {
+    border: 2px solid currentColor;
+
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+
+    border-bottom: 0;
+
+    margin-top: 6px;
+}
+
+
+.home-icon::before {
+    content: "";
+
+    position: absolute;
+
+    width: 15px;
+    height: 15px;
+
+    left: 2px;
+    top: -8px;
+
+    border-left: 2px solid currentColor;
+    border-top: 2px solid currentColor;
+
+    transform: rotate(45deg);
+}
+
+
+.trophy-icon {
+    border: 2px solid currentColor;
+
+    border-top: 0;
+
+    border-radius: 0 0 7px 7px;
+
+    width: 16px;
+    height: 14px;
+
+    margin-top: 2px;
+}
+
+
+.trophy-icon::before {
+    content: "";
+
+    position: absolute;
+
+    width: 5px;
+    height: 6px;
+
+    left: -7px;
+    top: 2px;
+
+    border: 2px solid currentColor;
+
+    border-right: 0;
+
+    border-radius: 6px 0 0 6px;
+}
+
+
+.trophy-icon::after {
+    content: "";
+
+    position: absolute;
+
+    width: 5px;
+    height: 6px;
+
+    right: -7px;
+    top: 2px;
+
+    border: 2px solid currentColor;
+
+    border-left: 0;
+
+    border-radius: 0 6px 6px 0;
+}
+
+
+.profile-icon {
+    border: 2px solid currentColor;
+
+    border-radius: 50%;
+}
+
+
+.profile-icon::before {
+    content: "";
+
+    position: absolute;
+
+    width: 6px;
+    height: 6px;
+
+    left: 6px;
+    top: 4px;
+
+    border: 2px solid currentColor;
+
+    border-radius: 50%;
+}
+
+
+.profile-icon::after {
+    content: "";
+
+    position: absolute;
+
+    width: 11px;
+    height: 6px;
+
+    left: 4px;
+    bottom: 3px;
+
+    border: 2px solid currentColor;
+
+    border-radius: 8px 8px 0 0;
+
+    border-bottom: 0;
+}
+
+
+.tap-icon {
+    border: 2px solid currentColor;
+
+    border-radius: 50%;
+
+    transform: rotate(-25deg);
+}
+
+
+.tap-icon::before {
+    content: "";
+
+    position: absolute;
+
+    width: 8px;
+    height: 8px;
+
+    right: -4px;
+    top: 2px;
+
+    border-right: 2px solid currentColor;
+    border-top: 2px solid currentColor;
+}
+
+
+/* ================= SMALL PHONES ================= */
+
+@media (max-width: 360px) {
+
+    .app {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .games-grid {
+        gap: 6px;
+    }
+
+    .game-card {
+        border-radius: 15px;
+    }
+
+    .game-info {
+        left: 7px;
+        right: 6px;
+        bottom: 8px;
+    }
+
+    .game-description {
+        font-size: 8px;
+    }
+
+    .play-arrow {
+        width: 22px;
+        height: 22px;
+
+        font-size: 15px;
+    }
+
+    .brand-main {
+        font-size: 34px;
+    }
+
+    .balance-box {
+        min-width: 95px;
+    }
+
+}
