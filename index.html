@@ -2,6 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+
     <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
@@ -16,281 +17,563 @@
 
 <body>
 
-    <div class="app">
+<div class="app">
 
-        <!-- HEADER -->
-        <header class="header">
-            <div>
-                <div class="logo">WIW GAMES</div>
-                <div class="subtitle">Мини-игры в Telegram</div>
+    <!-- HEADER -->
+
+    <header class="header">
+
+        <div class="logo">
+            <div class="logo-main">
+                WIW
             </div>
 
-            <div class="balance">
-                <span>⭐</span>
-                <span id="balance">1000</span>
+            <div class="logo-sub">
+                GAMES
             </div>
-        </header>
+        </div>
+
+        <div class="balance">
+            <span class="balance-star">★</span>
+            <span id="balance">1000</span>
+        </div>
+
+    </header>
 
 
-        <!-- MAIN -->
-        <main>
+    <!-- MAIN -->
 
-            <section id="homePage" class="page active">
+    <main>
 
-                <div class="hero">
-                    <div class="hero-icon">🎮</div>
+        <!-- HOME -->
 
-                    <h1>Играй и выигрывай</h1>
+        <section
+            id="homePage"
+            class="page active"
+        >
 
-                    <p>
-                        Выбирай игру и проверяй свою удачу
-                    </p>
+            <div class="welcome">
+
+                <div class="welcome-title">
+                    Добро пожаловать
                 </div>
 
-
-                <div class="section-title">
-                    Игры
+                <div class="welcome-text">
+                    Выбирай игру и начинай
                 </div>
 
-
-                <div class="games-grid">
-
-                    <!-- ROCKET -->
-                    <button
-                        class="game-card rocket-card"
-                        onclick="openGame('rocket')"
-                    >
-                        <div class="game-icon">🚀</div>
-
-                        <div class="game-info">
-                            <h2>Rocket</h2>
-                            <p>Успей забрать выигрыш</p>
-                        </div>
-
-                        <div class="arrow">›</div>
-                    </button>
+            </div>
 
 
-                    <!-- MINES -->
-                    <button
-                        class="game-card mines-card"
-                        onclick="openGame('mines')"
-                    >
-                        <div class="game-icon">💣</div>
-
-                        <div class="game-info">
-                            <h2>Mines</h2>
-                            <p>Найди безопасные клетки</p>
-                        </div>
-
-                        <div class="arrow">›</div>
-                    </button>
+            <div class="section-title">
+                Игры
+            </div>
 
 
-                    <!-- PLINKO -->
-                    <button
-                        class="game-card plinko-card"
-                        onclick="openGame('plinko')"
-                    >
-                        <div class="game-icon">🔮</div>
-
-                        <div class="game-info">
-                            <h2>Plinko</h2>
-                            <p>Запусти шарик вниз</p>
-                        </div>
-
-                        <div class="arrow">›</div>
-                    </button>
-
-                </div>
-
-            </section>
-
-
-            <!-- ROCKET PAGE -->
-            <section id="rocketPage" class="page">
+            <div class="games">
 
                 <button
-                    class="back-button"
-                    onclick="goHome()"
+                    class="game-card"
+                    onclick="openPage('rocketPage')"
                 >
-                    ← Назад
-                </button>
 
-                <div class="game-header">
-                    <h1>🚀 Rocket</h1>
-                    <p>Забери очки до взрыва</p>
-                </div>
-
-                <div class="rocket-game">
-
-                    <div class="rocket-multiplier" id="rocketMultiplier">
-                        1.00x
+                    <div class="game-icon rocket-icon">
+                        R
                     </div>
 
-                    <div
-                        class="rocket-status"
-                        id="rocketStatus"
-                    >
-                        Готово
-                    </div>
+                    <div class="game-info">
 
-                    <div
-                        class="rocket-area"
-                        id="rocketArea"
-                    >
-                        <div
-                            class="rocket-trail"
-                            id="rocketTrail"
-                        ></div>
-
-                        <div
-                            class="rocket-ship"
-                            id="rocketShip"
-                        >
-                            🚀
+                        <div class="game-name">
+                            ROCKET
                         </div>
+
+                        <div class="game-description">
+                            Забери выигрыш вовремя
+                        </div>
+
                     </div>
 
-                    <button
-                        class="main-button"
-                        id="rocketButton"
-                        onclick="startRocket()"
-                    >
-                        ЗАПУСТИТЬ
-                    </button>
+                    <div class="game-arrow">
+                        →
+                    </div>
 
-                </div>
-
-            </section>
-
-
-            <!-- MINES PAGE -->
-            <section id="minesPage" class="page">
-
-                <button
-                    class="back-button"
-                    onclick="goHome()"
-                >
-                    ← Назад
                 </button>
 
-                <div class="game-header">
-                    <h1>💣 Mines</h1>
-                    <p>Открывай клетки и избегай мин</p>
-                </div>
-
-                <div class="mines-game">
-
-                    <div
-                        class="mines-status"
-                        id="minesStatus"
-                    >
-                        Выбери клетку
-                    </div>
-
-                    <div
-                        class="mines-grid"
-                        id="minesGrid"
-                    ></div>
-
-                    <button
-                        class="main-button"
-                        onclick="startMines()"
-                    >
-                        НОВАЯ ИГРА
-                    </button>
-
-                </div>
-
-            </section>
-
-
-            <!-- PLINKO PAGE -->
-            <section id="plinkoPage" class="page">
 
                 <button
-                    class="back-button"
-                    onclick="goHome()"
+                    class="game-card"
+                    onclick="openPage('minesPage')"
                 >
-                    ← Назад
-                </button>
 
-                <div class="game-header">
-                    <h1>🔮 Plinko</h1>
-                    <p>Смотри, куда упадёт шарик</p>
-                </div>
-
-                <div class="plinko-game">
-
-                    <div
-                        class="plinko-result"
-                        id="plinkoResult"
-                    >
-                        ?
+                    <div class="game-icon mines-icon">
+                        M
                     </div>
 
-                    <div
-                        class="plinko-board"
-                        id="plinkoBoard"
-                    ></div>
+                    <div class="game-info">
 
-                    <button
-                        class="main-button"
-                        onclick="dropPlinko()"
-                    >
-                        БРОСИТЬ ШАРИК
-                    </button>
+                        <div class="game-name">
+                            MINES
+                        </div>
+
+                        <div class="game-description">
+                            Найди безопасные клетки
+                        </div>
+
+                    </div>
+
+                    <div class="game-arrow">
+                        →
+                    </div>
+
+                </button>
+
+
+                <button
+                    class="game-card"
+                    onclick="openPage('plinkoPage')"
+                >
+
+                    <div class="game-icon plinko-icon">
+                        P
+                    </div>
+
+                    <div class="game-info">
+
+                        <div class="game-name">
+                            PLINKO
+                        </div>
+
+                        <div class="game-description">
+                            Запусти шарик
+                        </div>
+
+                    </div>
+
+                    <div class="game-arrow">
+                        →
+                    </div>
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- PROFILE -->
+
+        <section
+            id="profilePage"
+            class="page"
+        >
+
+            <div class="page-header">
+
+                <div class="page-title">
+                    Профиль
+                </div>
+
+                <div class="page-subtitle">
+                    Твоя статистика
+                </div>
+
+            </div>
+
+
+            <div class="profile-card">
+
+                <div class="profile-avatar">
+                    W
+                </div>
+
+                <div class="profile-name">
+                    Игрок
+                </div>
+
+                <div class="profile-id">
+                    ID: <span id="playerId">000000</span>
+                </div>
+
+            </div>
+
+
+            <div class="stats">
+
+                <div class="stat-card">
+
+                    <span class="stat-value" id="profileBalance">
+                        1000
+                    </span>
+
+                    <span class="stat-label">
+                        Баланс
+                    </span>
 
                 </div>
 
-            </section>
 
-        </main>
+                <div class="stat-card">
+
+                    <span class="stat-value" id="tapCount">
+                        0
+                    </span>
+
+                    <span class="stat-label">
+                        Тапов
+                    </span>
+
+                </div>
 
 
-        <!-- BOTTOM NAV -->
-        <nav class="bottom-nav">
+                <div class="stat-card">
+
+                    <span class="stat-value">
+                        0
+                    </span>
+
+                    <span class="stat-label">
+                        Игр
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- LEADERBOARD -->
+
+        <section
+            id="leaderboardPage"
+            class="page"
+        >
+
+            <div class="page-header">
+
+                <div class="page-title">
+                    Лидерборд
+                </div>
+
+                <div class="page-subtitle">
+                    Лучшие игроки
+                </div>
+
+            </div>
+
+
+            <div class="leaderboard">
+
+                <div class="leader-row">
+
+                    <div class="leader-place">
+                        1
+                    </div>
+
+                    <div class="leader-avatar">
+                        A
+                    </div>
+
+                    <div class="leader-name">
+                        PlayerOne
+                    </div>
+
+                    <div class="leader-score">
+                        12500 ★
+                    </div>
+
+                </div>
+
+
+                <div class="leader-row">
+
+                    <div class="leader-place">
+                        2
+                    </div>
+
+                    <div class="leader-avatar">
+                        K
+                    </div>
+
+                    <div class="leader-name">
+                        King
+                    </div>
+
+                    <div class="leader-score">
+                        9800 ★
+                    </div>
+
+                </div>
+
+
+                <div class="leader-row">
+
+                    <div class="leader-place">
+                        3
+                    </div>
+
+                    <div class="leader-avatar">
+                        M
+                    </div>
+
+                    <div class="leader-name">
+                        Master
+                    </div>
+
+                    <div class="leader-score">
+                        7600 ★
+                    </div>
+
+                </div>
+
+
+                <div class="leader-row">
+
+                    <div class="leader-place">
+                        4
+                    </div>
+
+                    <div class="leader-avatar">
+                        W
+                    </div>
+
+                    <div class="leader-name">
+                        Player
+                    </div>
+
+                    <div class="leader-score">
+                        5400 ★
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- TAPPER -->
+
+        <section
+            id="tapPage"
+            class="page"
+        >
+
+            <div class="page-header">
+
+                <div class="page-title">
+                    Тапалка
+                </div>
+
+                <div class="page-subtitle">
+                    Нажимай и получай очки
+                </div>
+
+            </div>
+
+
+            <div class="tap-balance">
+
+                <div class="tap-balance-label">
+                    Баланс
+                </div>
+
+                <div class="tap-balance-value">
+
+                    <span id="tapBalance">
+                        1000
+                    </span>
+
+                    <span class="star">
+                        ★
+                    </span>
+
+                </div>
+
+            </div>
+
 
             <button
-                class="nav-button active"
-                id="homeNav"
+                class="tap-button"
+                onclick="tap()"
+            >
+
+                <span class="tap-button-text">
+                    TAP
+                </span>
+
+                <span class="tap-button-plus">
+                    +1
+                </span>
+
+            </button>
+
+
+            <div class="tap-info">
+
+                <div>
+                    Каждый тап
+                </div>
+
+                <strong>
+                    +1 ★
+                </strong>
+
+            </div>
+
+        </section>
+
+
+        <!-- ROCKET PLACEHOLDER -->
+
+        <section
+            id="rocketPage"
+            class="page game-page"
+        >
+
+            <button
+                class="back-button"
                 onclick="goHome()"
             >
-                <span>⌂</span>
-                <small>Главная</small>
+                ← Назад
             </button>
+
+            <div class="page-title">
+                ROCKET
+            </div>
+
+            <div class="coming-soon">
+                Скоро
+            </div>
+
+        </section>
+
+
+        <!-- MINES PLACEHOLDER -->
+
+        <section
+            id="minesPage"
+            class="page game-page"
+        >
 
             <button
-                class="nav-button"
-                onclick="openGame('rocket')"
+                class="back-button"
+                onclick="goHome()"
             >
-                <span>🚀</span>
-                <small>Rocket</small>
+                ← Назад
             </button>
+
+            <div class="page-title">
+                MINES
+            </div>
+
+            <div class="coming-soon">
+                Скоро
+            </div>
+
+        </section>
+
+
+        <!-- PLINKO PLACEHOLDER -->
+
+        <section
+            id="plinkoPage"
+            class="page game-page"
+        >
 
             <button
-                class="nav-button"
-                onclick="openGame('mines')"
+                class="back-button"
+                onclick="goHome()"
             >
-                <span>💣</span>
-                <small>Mines</small>
+                ← Назад
             </button>
 
-            <button
-                class="nav-button"
-                onclick="openGame('plinko')"
-            >
-                <span>🔮</span>
-                <small>Plinko</small>
-            </button>
+            <div class="page-title">
+                PLINKO
+            </div>
 
-        </nav>
+            <div class="coming-soon">
+                Скоро
+            </div>
 
-    </div>
+        </section>
+
+    </main>
 
 
-    <script src="game.js"></script>
+    <!-- BOTTOM NAV -->
+
+    <nav class="bottom-nav">
+
+        <button
+            class="nav-item active"
+            onclick="openPage('homePage')"
+        >
+
+            <span class="nav-icon">
+                ◈
+            </span>
+
+            <span>
+                Главная
+            </span>
+
+        </button>
+
+
+        <button
+            class="nav-item"
+            onclick="openPage('leaderboardPage')"
+        >
+
+            <span class="nav-icon">
+                ≡
+            </span>
+
+            <span>
+                Топ
+            </span>
+
+        </button>
+
+
+        <button
+            class="nav-item"
+            onclick="openPage('tapPage')"
+        >
+
+            <span class="nav-icon">
+                +
+            </span>
+
+            <span>
+                Тап
+            </span>
+
+        </button>
+
+
+        <button
+            class="nav-item"
+            onclick="openPage('profilePage')"
+        >
+
+            <span class="nav-icon">
+                ○
+            </span>
+
+            <span>
+                Профиль
+            </span>
+
+        </button>
+
+    </nav>
+
+</div>
+
+
+<script src="game.js"></script>
 
 </body>
 </html>
