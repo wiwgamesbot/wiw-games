@@ -487,298 +487,76 @@
 
 
 
-    /* ================= BOTTOM NAV ================= */
+    <!-- ================= BOTTOM NAV ================= -->
 
-.bottom-nav {
-    position: fixed;
+    <nav class="bottom-nav">
 
-    z-index: 100;
+        <button
+            class="nav-item active"
+            data-page="homePage"
+            onclick="openPage('homePage')"
+        >
 
-    left: 10px;
-    right: 10px;
-    bottom: 10px;
+            <span class="nav-icon home-icon"></span>
 
-    height: 74px;
+            <span>
+                Игры
+            </span>
 
-    display: grid;
+        </button>
 
-    grid-template-columns:
-        repeat(4, 1fr);
 
-    padding: 5px;
+        <button
+            class="nav-item"
+            data-page="leaderboardPage"
+            onclick="openPage('leaderboardPage')"
+        >
 
-    border: 1px solid rgba(55, 255, 105, 0.55);
+            <span class="nav-icon trophy-icon"></span>
 
-    border-radius: 22px;
+            <span>
+                Топ
+            </span>
 
-    background:
-        rgba(1, 13, 6, 0.94);
+        </button>
 
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
 
-    box-shadow:
-        0 0 22px rgba(0, 255, 70, 0.14),
-        inset 0 0 25px rgba(0, 255, 70, 0.03);
-}
+        <button
+            class="nav-item"
+            data-page="profilePage"
+            onclick="openPage('profilePage')"
+        >
 
+            <span class="nav-icon profile-icon"></span>
 
-.nav-item {
-    position: relative;
+            <span>
+                Профиль
+            </span>
 
-    border: 0;
+        </button>
 
-    background: transparent;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+        <button
+            class="nav-item"
+            data-page="tapPage"
+            onclick="openPage('tapPage')"
+        >
 
-    gap: 6px;
+            <span class="nav-icon tap-icon"></span>
 
-    color: #728b79;
+            <span>
+                Тапалка
+            </span>
 
-    font-size: 10px;
+        </button>
 
-    cursor: pointer;
+    </nav>
 
-    border-radius: 17px;
-}
+</div>
 
 
-.nav-item.active {
-    color: #8cffaa;
+<script src="https://telegram.org/js/telegram-web-app.js?63"></script>
+<script src="game.js"></script>
 
-    background:
-        rgba(0, 255, 70, 0.08);
-
-    text-shadow:
-        0 0 8px rgba(0, 255, 70, 0.7);
-}
-
-
-.nav-item.active::after {
-    content: "";
-
-    position: absolute;
-
-    bottom: 3px;
-
-    width: 35px;
-    height: 3px;
-
-    border-radius: 10px;
-
-    background: #3cff76;
-
-    box-shadow:
-        0 0 9px #00ff55;
-}
-
-
-/* ================= SVG-LIKE CSS ICONS ================= */
-
-.nav-icon {
-    position: relative;
-
-    width: 23px;
-    height: 23px;
-
-    display: block;
-}
-
-
-.home-icon {
-    border: 2px solid currentColor;
-
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
-
-    border-bottom: 0;
-
-    margin-top: 6px;
-}
-
-
-.home-icon::before {
-    content: "";
-
-    position: absolute;
-
-    width: 15px;
-    height: 15px;
-
-    left: 2px;
-    top: -8px;
-
-    border-left: 2px solid currentColor;
-    border-top: 2px solid currentColor;
-
-    transform: rotate(45deg);
-}
-
-
-.trophy-icon {
-    border: 2px solid currentColor;
-
-    border-top: 0;
-
-    border-radius: 0 0 7px 7px;
-
-    width: 16px;
-    height: 14px;
-
-    margin-top: 2px;
-}
-
-
-.trophy-icon::before {
-    content: "";
-
-    position: absolute;
-
-    width: 5px;
-    height: 6px;
-
-    left: -7px;
-    top: 2px;
-
-    border: 2px solid currentColor;
-
-    border-right: 0;
-
-    border-radius: 6px 0 0 6px;
-}
-
-
-.trophy-icon::after {
-    content: "";
-
-    position: absolute;
-
-    width: 5px;
-    height: 6px;
-
-    right: -7px;
-    top: 2px;
-
-    border: 2px solid currentColor;
-
-    border-left: 0;
-
-    border-radius: 0 6px 6px 0;
-}
-
-
-.profile-icon {
-    border: 2px solid currentColor;
-
-    border-radius: 50%;
-}
-
-
-.profile-icon::before {
-    content: "";
-
-    position: absolute;
-
-    width: 6px;
-    height: 6px;
-
-    left: 6px;
-    top: 4px;
-
-    border: 2px solid currentColor;
-
-    border-radius: 50%;
-}
-
-
-.profile-icon::after {
-    content: "";
-
-    position: absolute;
-
-    width: 11px;
-    height: 6px;
-
-    left: 4px;
-    bottom: 3px;
-
-    border: 2px solid currentColor;
-
-    border-radius: 8px 8px 0 0;
-
-    border-bottom: 0;
-}
-
-
-.tap-icon {
-    border: 2px solid currentColor;
-
-    border-radius: 50%;
-
-    transform: rotate(-25deg);
-}
-
-
-.tap-icon::before {
-    content: "";
-
-    position: absolute;
-
-    width: 8px;
-    height: 8px;
-
-    right: -4px;
-    top: 2px;
-
-    border-right: 2px solid currentColor;
-    border-top: 2px solid currentColor;
-}
-
-
-/* ================= SMALL PHONES ================= */
-
-@media (max-width: 360px) {
-
-    .app {
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-
-    .games-grid {
-        gap: 6px;
-    }
-
-    .game-card {
-        border-radius: 15px;
-    }
-
-    .game-info {
-        left: 7px;
-        right: 6px;
-        bottom: 8px;
-    }
-
-    .game-description {
-        font-size: 8px;
-    }
-
-    .play-arrow {
-        width: 22px;
-        height: 22px;
-
-        font-size: 15px;
-    }
-
-    .brand-main {
-        font-size: 34px;
-    }
-
-    .balance-box {
-        min-width: 95px;
-    }
-
-}
+</body>
+</html>
